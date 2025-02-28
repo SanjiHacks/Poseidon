@@ -53,7 +53,7 @@ cd Poseidon
    
 ---
 
-## 🛠️ **Step 8: Troubleshooting**
+## 🛠️ **Step 5: Troubleshooting**
 If you encounter issues:
 1. **Permission Denied**:
    - Ensure Termux has storage access:
@@ -68,7 +68,7 @@ If you encounter issues:
 
 ---
 
-## 🛠️ **Step 9: Ethical Use**
+## 🛠️ **Step 6: Ethical Use**
 Always use your tool responsibly and for **ethical purposes only**. Misuse of phishing tools can have serious legal consequences.
 
 ---
