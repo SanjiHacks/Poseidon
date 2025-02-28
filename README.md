@@ -29,6 +29,7 @@ Poseidon stands out as the ultimate toolkit for cybersecurity professionals due 
 
 ## 🛠️ Installation
 Follow these steps to install Poseidon:
+If on Termux go here (Termux Setup README.md)
 
 ```bash
 # Clone the repository
