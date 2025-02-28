@@ -27,7 +27,8 @@ Poseidon stands out as the ultimate toolkit for cybersecurity professionals due 
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Installation (Kali Linux)
+## For Termux >> [Termux setup](https://github.com/SanjiHacks/Poseidon/blob/main/Termux%20Setup%20README.md)
 Follow these steps to install Poseidon:
 
 ```bash
