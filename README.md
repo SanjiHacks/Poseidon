@@ -39,7 +39,7 @@ Detailed documentation is available to guide you through the installation, confi
 We welcome contributions from the community! If you have ideas, bug reports, or improvements, feel free to open an issue or submit a pull request.
 
 ## 📬 Contact
-For any inquiries or support, please contact us at [support@poseidon.com](mailto:support@poseidon.com).
+For any inquiries or support, please contact us at (https://discord.gg/r5sQjdPZz8).
 
 ---
 
