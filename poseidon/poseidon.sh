@@ -2,12 +2,27 @@
 
 # Function to display the main menu
 show_menu() {
-    echo -e "\n\033[1;32mPoseidon - The Ultimate Phishing Tool\033[0m"
-    echo -e "\nSelect a template:"
-    echo "1. Facebook"
-    echo "2. Google"
-    echo "3. Instagram"
-    echo "0. Exit"
+    clear
+    echo -e "\033[1;34m"
+    cat << "EOF"
+
+██████╗░░█████╗░░██████╗███████╗██╗██████╗░░█████╗░███╗░░██╗
+██╔══██╗██╔══██╗██╔════╝██╔════╝██║██╔══██╗██╔══██╗████╗░██║
+██████╔╝██║░░██║╚█████╗░█████╗░░██║██║░░██║██║░░██║██╔██╗██║
+██╔═══╝░██║░░██║░╚═══██╗██╔══╝░░██║██║░░██║██║░░██║██║╚████║
+██║░░░░░╚█████╔╝██████╔╝███████╗██║██████╔╝╚█████╔╝██║░╚███║
+╚═╝░░░░░░╚════╝░╚═════╝░╚══════╝╚═╝╚═════╝░░╚════╝░╚═╝░░╚══╝
+EOF
+    echo -e "\033[0m"
+    
+    echo -e "\n\033[1;36mPoseidon - The Ultimate Phishing Tool\033[0m"
+    echo -e "\n\033[1;34mSelect a template:\033[0m"
+    echo -e "\033[1;34m----------------------------------\033[0m"
+    echo -e "\033[1;36m1. Facebook\033[0m"
+    echo -e "\033[1;36m2. Google\033[0m"
+    echo -e "\033[1;36m3. Instagram\033[0m"
+    echo -e "\033[1;31m0. Exit\033[0m"
+    echo -e "\033[1;34m----------------------------------\033[0m"
 }
 
 # Function to start the phishing server
