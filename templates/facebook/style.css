@@ -1,26 +1,32 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.header {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .header h1 {
+    font-size: 3em;
     color: #1877f2;
-    font-size: 3rem;
     margin: 0;
 }
 
 .header p {
-    font-size: 1.2rem;
-    color: #1c1e21;
+    font-size: 1.2em;
+    color: #606770;
 }
 
 .login-box {
@@ -29,41 +35,46 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
-    margin: 20px auto;
+    text-align: center;
 }
 
-.login-box input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+.login-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    padding: 12px;
+    margin: 8px 0;
     border: 1px solid #dddfe2;
-    border-radius: 6px;
-    font-size: 1rem;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 .login-box button {
-    width: 100%;
-    padding: 10px;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-box button[type="submit"] {
     background-color: #1877f2;
     color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
 }
 
 .login-box button.create-account {
     background-color: #42b72a;
-    margin-top: 10px;
+    color: #fff;
 }
 
 .login-box a {
-    color: #1877f2;
     text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.login-box hr {
-    border: 0.5px solid #dddfe2;
-    margin: 20px 0;
+    color: #1877f2;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
 }
