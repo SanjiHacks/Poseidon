@@ -39,6 +39,9 @@ check_directories() {
     if [ ! -d "logs" ]; then
         mkdir logs
     fi
+    if [ ! -d "data" ]; then
+        mkdir data
+    fi
 }
 
 # Function to start the phishing server

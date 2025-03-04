@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     // If the form isn't submitted, redirect to the login page
-    header("Location: ../templates/facebook/index.html");
+    header("Location: ../index.html");
     exit();
 }
 ?>
