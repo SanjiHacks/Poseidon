@@ -24,7 +24,7 @@
         text-align: center; /* Centers text */
         font-family: 'Proxima Nova', 'Roboto', Arial, sans-serif; /* Instagram-style font */
         font-size: 12px; /* Consistent text size */
-        color: #833AB4; /* Instagram purple */
+        color: #262626; /* Instagram purple */
     }
 
     .footer-links {
@@ -43,7 +43,7 @@
 
     .footer-links a {
         text-decoration: none;
-        color: #833AB4; /* Instagram purple */
+        color: #262626; 
         font-size: 12px;
         letter-spacing: 0.5px;
     }
@@ -57,12 +57,12 @@
     .copyright {
         margin-top: 10px;
         font-size: 12px; /* Matches footer link size */
-        color: #833AB4;
+        color: #262626;
     }
 
     .copyright a {
         text-decoration: none;
-        color: #833AB4;
+        color: #262626;
     }
 
     /* Underline copyright text on hover */
