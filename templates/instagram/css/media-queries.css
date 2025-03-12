@@ -1,0 +1,82 @@
+/** TABLET **/
+/** Changes made for devices for minimum width **/
+@media screen and (min-width: 876px) {
+    main {
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+    }
+    
+    .phones-container {
+        display: initial;
+    }
+    
+    .log-in-container {
+        order: 1;
+    }
+    
+    footer {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Keeps elements stacked */
+        align-items: center; /* Centers content */
+        padding: 2rem 0;
+        text-align: center; /* Centers text */
+        font-family: 'Proxima Nova', 'Roboto', Arial, sans-serif; /* Instagram-style font */
+        font-size: 12px; /* Consistent text size */
+        color: #833AB4; /* Instagram purple */
+    }
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Centers links */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        gap: 10px; /* Spacing between links */
+    }
+
+    .footer-links li {
+        flex-basis: auto;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: #833AB4; /* Instagram purple */
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Underline in purple on hover */
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+
+    /* Ensure copyright section matches footer links */
+    .copyright {
+        margin-top: 10px;
+        font-size: 12px; /* Matches footer link size */
+        color: #833AB4;
+    }
+
+    .copyright a {
+        text-decoration: none;
+        color: #833AB4;
+    }
+
+    /* Underline copyright text on hover */
+    .copyright a:hover {
+        text-decoration: underline;
+    }
+}
+
+/** DESKTOP **/
+@media screen and (min-width: 1527px) {
+    footer {
+        flex-direction: column; /* Keeps everything stacked and centered */
+        align-items: center;
+        justify-content: center;
+        font-size: 12px; /* Same size as links */
+    }
+}
